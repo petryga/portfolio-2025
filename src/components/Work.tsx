@@ -58,7 +58,7 @@ const projects = [
   },
   {
     title: "Landing Page 2024",
-    description: "Responsive marketing pages with smooth GSAP animations.",
+    description: "Responsive landing page with smooth GSAP animations.",
     tech: ["React", "HTML/CSS", "GSAP"],
     role: "Frontend Developer",
     image: blackAndWhitePortfolioImg,
@@ -66,7 +66,7 @@ const projects = [
   },
   {
     title: "Landing Page 2021",
-    description: "Responsive and optimized promotional site.",
+    description: "Responsive and optimized landing page.",
     tech: ["JavaScript", "HTML/CSS"],
     role: "Frontend Developer",
     image: vaporwavePortfolioImg,
