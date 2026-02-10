@@ -47,7 +47,7 @@ const Contact = () => {
 
       <footer className="mt-24 pt-8 border-t border-border">
         <div className="max-w-6xl mx-auto flex justify-between items-center text-sm text-subtle">
-          <p>© 2025 Alexandra Petryga · All rights reserved</p>
+          <p>© 2026 Alexandra Petryga · All rights reserved</p>
         </div>
       </footer>
     </section>
