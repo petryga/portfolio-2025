@@ -5,8 +5,9 @@ export const skillCategories = [
       "Node.js",
       "Express",
       "REST APIs",
-      "GraphQL",
       "PostgreSQL",
+      "AWS Lambda",
+      "Sequelize",
       "MongoDB",
     ],
   },
@@ -24,15 +25,11 @@ export const skillCategories = [
   },
   {
     category: "Tools & DevOps",
-    skills: ["AI", "Docker", "AWS", "CI/CD", "Git", "Jest", "Webpack"],
+    skills: ["Docker", "AWS", "CI/CD", "Git", "Jest", "Claude Code"],
   },
   {
-    category: "Design & UX",
-    skills: [
-      "Responsive Design",
-      "UI/UX Principles",
-      "Accessibility",
-      "Animation",
-    ],
-  },
+    category: "Currently Exploring",
+    skills: ["Arduino", 'Hugging Face Agents Course'],
+  }
 ];
+

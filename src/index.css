@@ -28,6 +28,7 @@ All colors MUST be HSL.
 
     --accent: 150 25% 65%;
     --accent-foreground: 0 0% 10%;
+    --accent-readable: 150 45% 30%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 99%;
@@ -67,6 +68,7 @@ All colors MUST be HSL.
 
     --accent: 150 25% 50%;
     --accent-foreground: 0 0% 99%;
+    --accent-readable: 150 25% 50%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 99%;
@@ -100,11 +102,25 @@ All colors MUST be HSL.
     color: hsl(var(--text-subtle));
   }
 
+  .text-accent-readable {
+    color: hsl(var(--accent-readable));
+  }
+
   .surface-subtle {
     background-color: hsl(var(--surface-subtle));
   }
 
   .transition-smooth {
     transition: var(--transition-smooth);
+  }
+
+  .terminal-card {
+    background-color: hsl(var(--foreground) / 0.04);
+    border: 1px solid hsl(var(--accent) / 0.3);
+  }
+
+  .terminal-prompt::before {
+    content: "$ ";
+    color: hsl(var(--accent));
   }
 }

@@ -22,12 +22,12 @@ const Navigation = () => {
       <div className="max-w-6xl mx-auto px-6 md:px-12 py-6 flex justify-between items-center">
         <a
           href="#"
-          className="text-sm font-medium tracking-wide hover:text-accent transition-smooth"
+          className="font-mono text-sm tracking-wide hover:text-accent transition-smooth"
         >
           Alexandra Petryga
         </a>
 
-        <div className="flex gap-8 text-sm font-light">
+        <div className="flex gap-8 font-mono text-sm">
           <a href="#about" className="hover:text-accent transition-smooth">
             About
           </a>

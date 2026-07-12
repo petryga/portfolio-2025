@@ -9,14 +9,11 @@ const About = () => {
         </h2>
         <div className="space-y-6 text-lg md:text-xl font-light leading-relaxed">
           <p>
-            I’m a software engineer who enjoys working across the full stack —
-            from crafting clean, intuitive interfaces to building reliable and
-            maintainable backend systems.
+            I grew from frontend into full-stack at an early-stage legal tech startup — schema to UI,
+            backend logic to frontend polish, whatever a feature called for.
           </p>
-          <p className="text-subtle">
-            I care about writing code that’s clear, purposeful, and easy to work
-            with over time. <br /> My goal is to create practical solutions that
-            serve both the product and the people who build and use it.
+          <p>
+            Off the clock I run a home server, build voice automations, and script away anything I have to do twice.
           </p>
         </div>
 
@@ -30,7 +27,7 @@ const About = () => {
                 {category.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="px-4 py-2 text-sm surface-subtle rounded-full text-foreground hover:text-accent hover:scale-105 transition-smooth"
+                    className="font-mono px-4 py-2 text-sm surface-subtle rounded-full border border-accent/30 text-foreground hover:text-accent hover:scale-105 transition-smooth"
                   >
                     {skill}
                   </span>
@@ -39,6 +36,8 @@ const About = () => {
             </div>
           ))}
         </div>
+
+
       </div>
     </section>
   );

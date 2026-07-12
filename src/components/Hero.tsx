@@ -5,26 +5,23 @@ const Hero = () => {
     <section className="min-h-screen flex items-center justify-center px-6 md:px-12">
       <div className="max-w-4xl w-full">
         <div className="space-y-6 animate-fade-in backdrop-blur-sm bg-background/30 p-8 md:p-12 rounded-lg">
-          <p className="text-subtle text-sm md:text-base font-light tracking-wide uppercase">
-            Alexandra Petryga · Full Stack Software Engineer
-          </p>
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-light tracking-tight">
-            Building thoughtful
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight">
+            I ship features
             <br />
-            <span className="font-medium">digital experiences</span>
+            <span className="font-medium text-accent">that move money</span>
           </h1>
-          <p className="text-lg md:text-xl text-subtle max-w-2xl font-light leading-relaxed animate-fade-in-delay">
-            Working with React, Node.js, and the tools that tie them together, I
-            enjoy shaping ideas into systems that move effortlessly from
-            database to browser.
+          <p className="text-lg md:text-xl text-subtle font-light animate-fade-in-delay">
+            5+ years of full stack work where correctness actually matters —
+            real-time financial calculations, complex API integrations,
+            document automation.
           </p>
-          <div className="pt-4 animate-fade-in-delay">
+          <div className="pt-4 flex items-center gap-6 animate-fade-in-delay">
             <a
               href="#work"
               className="inline-flex items-center gap-2 text-foreground hover:text-accent transition-smooth group"
             >
-              <span className="font-medium">View my work</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-smooth" />
+              <span className="font-mono font-medium">View my work</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
             </a>
           </div>
         </div>
