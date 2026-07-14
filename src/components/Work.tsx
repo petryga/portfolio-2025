@@ -173,7 +173,7 @@ const Work = () => {
         </div>
 
         <h2 className="text-sm uppercase tracking-wide text-subtle mb-8 mt-16 font-mono">
-          Scripts & Automation
+          Scripts, Automation & Experiments
         </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
