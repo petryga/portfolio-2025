@@ -13,7 +13,7 @@ const Hero = () => {
           <p className="text-lg md:text-xl text-subtle font-light animate-fade-in-delay">
             5+ years of full stack work where correctness actually matters —
             real-time financial calculations, complex API integrations,
-            document automation.
+            and document automation.
           </p>
           <div className="pt-4 flex items-center gap-6 animate-fade-in-delay">
             <a

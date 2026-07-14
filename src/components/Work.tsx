@@ -43,7 +43,7 @@ const projects = [
   },
   {
     title: "Expense Tracker",
-    description: 'Built for myself after the budgeting app I used got discontinued. Tracks income, expenses, recurring transactions, and category budgets, with a net-worth tracker, monthly/yearly expense comparisons, and a cash-flow Sankey diagram. Originally ran locally only — added auth, hosting, and a demo user with seeded data that resets on login to publish it publicly.',
+    description: 'Built for myself after the budgeting app I used got discontinued. Tracks income, expenses, recurring transactions, and category budgets, with a net-worth tracker, monthly/yearly expense comparisons, and a cash-flow Sankey diagram. Originally ran locally only — added auth, hosting, and a demo user with seeded data that resets on login — to publish it publicly.',
     tech: ["React", "TypeScript", "Node.js", "Sequelize", "PostgreSQL"],
     image: expenseTrackerImg,
     link: "https://expense-tracker-fe-nu.vercel.app/",
@@ -82,7 +82,7 @@ const scripts = [
   {
     title: "Home Assistant Voice Pipeline",
     description:
-      "Self-hosted voice home assistant — customized ESPHome firmware config for a ReSpeaker Lite satellite, Whisper STT (Wyoming), Piper TTS, Ollama (qwen3:4b) as conversation agent. Voice automations for climate, lighting, navigation, and weather/AQI.",
+      "Self-hosted voice home assistant — customized ESPHome firmware config for a ReSpeaker Lite satellite, Whisper STT (Wyoming), Piper TTS, Ollama (qwen3:4b) as the conversation agent. Voice automations for climate, lighting, navigation, and weather/AQI.",
     tech: ["ESPHome", "Whisper", "Piper TTS", "Ollama", "YAML"],
   },
   {

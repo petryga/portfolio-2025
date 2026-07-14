@@ -13,7 +13,7 @@ const About = () => {
             backend logic to frontend polish, whatever a feature called for.
           </p>
           <p>
-            Off the clock I run a home server, build voice automations, and script away anything I have to do twice.
+            Off the clock, I run a home server, build voice automations, and script away anything I have to do twice.
           </p>
         </div>
 
