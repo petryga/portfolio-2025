@@ -9,6 +9,7 @@ export const skillCategories = [
       "AWS Lambda",
       "Sequelize",
       "MongoDB",
+      "Python",
     ],
   },
   {

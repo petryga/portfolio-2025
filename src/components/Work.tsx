@@ -4,10 +4,10 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Lock } from "lucide-react";
 import goveyanceImg from "@/assets/9.jpeg";
 import jobTrackerImg from "@/assets/10.jpg";
 import readyWhenImg from "@/assets/6.jpeg";
-import adminPortalImg from "@/assets/8.jpeg";
 import expenseTrackerImg from "@/assets/3.jpeg";
 import vaporwavePortfolioImg from "@/assets/7.jpeg";
 import firstPortfolioImg from "@/assets/5.jpeg";
@@ -15,20 +15,31 @@ import blackAndWhitePortfolioImg from "@/assets/4.jpeg";
 
 const projects = [
   {
-    title: "Goveyance",
+    title: "GoVeyance",
     description:
-      "Real-time financial calculation engine and Canada's first automated private-lending workflow, plus bidirectional integration with BC's land title registry (LTSA).",
-    tech: ["React", "TypeScript", "AWS Lambda", "PostgreSQL", "LTSA API"],
-    role: "Full Stack Developer",
+      "Real estate closing software for BC and Ontario law firms and notaries. Designed and built Ontario's real-time financial calculation engine and closing-payout system from scratch, using an extensible, type-driven architecture; also built BC's tax-aware Account Library and the Payout Investors module for GoVeyance's industry-first private-lending workflow.",
+    tech: ["React", "TypeScript", "AWS Lambda", "PostgreSQL", "Sequelize"],
     image: goveyanceImg,
     link: "https://goveyance.com/",
   },
   {
     title: "ReadyWhen",
-    description: "Estate planning platform: 40+ JSON Schema-driven dynamic forms, document generation, client + notary portals. React/TS frontend, serverless Node backend.",
+    description: "Estate planning platform with client + notary portals and automated document generation. Built 40+ forms within its JSON Schema-driven form system. React/TS frontend, serverless Node backend.",
     tech: ["React", "TypeScript", "JSON Schema", "Node.js", "PostgreSQL"],
     image: readyWhenImg,
     link: "https://readywhen.com/",
+  },
+  {
+    title: "Admin Portal",
+    description: "Internal back-office tool for company staff — built out forms for the admin frontend, backed by serverless REST APIs.",
+    tech: ["React", "TypeScript", "REST APIs"],
+    link: "https://admin.app.readywhen.ca/",
+  },
+  {
+    title: "Support Portal",
+    description:
+      "Internal back-office tool for customer support staff managing law firm and notary accounts. Owned default data seeding on company creation — schema migrations and seeding logic auto-provisioning checklists, templates, and fees, with BC/Ontario separation.",
+    tech: ["React", "TypeScript", "Node.js", "AWS Lambda", "PostgreSQL"],
   },
   {
     title: "Expense Tracker",
@@ -36,13 +47,6 @@ const projects = [
     tech: ["React", "TypeScript", "Node.js", "Sequelize", "PostgreSQL"],
     image: expenseTrackerImg,
     link: "https://expense-tracker-fe-nu.vercel.app/",
-  },
-  {
-    title: "Admin Portal",
-    description: "Role-based access control, feature toggles, and org management — config-driven routing over REST APIs.",
-    tech: ["React", "TypeScript", "RBAC", "REST APIs"],
-    image: adminPortalImg,
-    link: "https://admin.app.readywhen.ca/",
   },
   {
     title: "Kanban board",
@@ -99,6 +103,12 @@ const scripts = [
       "Bash + AppleScript focus trigger — closes distracting apps, opens VS Code + Notion via deep link, enforces website & application allowlists.",
     tech: ["Bash", "AppleScript", "macOS"],
   },
+  {
+    title: "Waste Sorting Classifier",
+    description:
+      "fastai vision model that classifies a photo into material type, then maps it to the right disposal bin (recyclable / compost / landfill) with a confidence threshold for uncertain guesses. FastAPI backend serving predictions to a small web frontend.",
+    tech: ["Python", "FastAPI", "fastai"],
+  },
 ];
 
 const Work = () => {
@@ -122,11 +132,18 @@ const Work = () => {
                 }`}
             >
               <div className="relative overflow-hidden rounded-t-lg aspect-video bg-muted border border-border border-b-0">
-                <img
-                  src={project.image}
-                  alt={`${project.title} screenshot`}
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-smooth group-hover:scale-105"
-                />
+                {project.image ? (
+                  <img
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-smooth group-hover:scale-105"
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-subtle">
+                    <Lock className="w-6 h-6" strokeWidth={1.5} />
+                    <span className="font-mono text-xs">Internal tool — no public preview</span>
+                  </div>
+                )}
               </div>
               <Card className="border-accent/30 bg-card shadow-none flex-1 flex flex-col rounded-t-none rounded-b-lg">
                 <CardHeader>
