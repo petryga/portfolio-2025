@@ -17,14 +17,14 @@ const projects = [
   {
     title: "GoVeyance",
     description:
-      "Real estate closing software for BC and Ontario law firms and notaries. Designed and built Ontario's real-time financial calculation engine and closing-payout system from scratch, using an extensible, type-driven architecture; also built BC's tax-aware Account Library and the Payout Investors module for GoVeyance's industry-first private-lending workflow.",
+      "Legal tech for real estate transactions: software BC and Ontario law firms and notaries use to close property sales. Designed and built Ontario's real-time financial calculation engine and closing-payout system from scratch, using an extensible, type-driven architecture; also built BC's tax-aware Account Library and the Payout Investors module for GoVeyance's industry-first private-lending workflow.",
     tech: ["React", "TypeScript", "AWS Lambda", "PostgreSQL", "Sequelize"],
     image: goveyanceImg,
     link: "https://goveyance.com/",
   },
   {
     title: "ReadyWhen",
-    description: "Estate planning platform with client + notary portals and automated document generation. Built 40+ forms within its JSON Schema-driven form system. React/TS frontend, serverless Node backend.",
+    description: "Wills & inheritance planning platform with client + notary portals and a secure document vault. Built 40+ forms within its JSON Schema-driven form system. React/TS frontend, serverless Node backend.",
     tech: ["React", "TypeScript", "JSON Schema", "Node.js", "PostgreSQL"],
     image: readyWhenImg,
     link: "https://readywhen.com/",
