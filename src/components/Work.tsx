@@ -43,8 +43,8 @@ const projects = [
   },
   {
     title: "Expense Tracker",
-    description: 'Built for myself after the budgeting app I used got discontinued. Tracks income, expenses, recurring transactions, and category budgets, with a net-worth tracker, monthly/yearly expense comparisons, and a cash-flow Sankey diagram. Originally ran locally only — added auth, hosting, and a demo user with seeded data that resets on login — to publish it publicly.',
-    tech: ["React", "TypeScript", "Node.js", "Sequelize", "PostgreSQL"],
+    description: 'Built for myself after the budgeting app I used got discontinued. Tracks income, expenses, recurring transactions, and category budgets, with a net-worth tracker, monthly/yearly expense comparisons, and a cash-flow Sankey diagram. Originally ran locally only — added auth, hosting, and a demo user with seeded data that resets on login — to publish it publicly. CI runs lint, typecheck, and 220+ unit tests across both apps on every push, and applies every migration and seeder to a throwaway Postgres container to catch anything that would break a deploy.',
+    tech: ["React", "TypeScript", "Node.js", "Sequelize", "PostgreSQL", "Docker"],
     image: expenseTrackerImg,
     link: "https://expense-tracker-fe-nu.vercel.app/",
   },
