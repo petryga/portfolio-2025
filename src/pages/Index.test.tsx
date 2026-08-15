@@ -6,10 +6,7 @@ import { describe, expect, it, vi } from 'vitest';
 vi.mock('@tsparticles/slim', () => ({ loadSlim: vi.fn() }));
 vi.mock('@tsparticles/react', () => ({
   default: () => <div data-testid="particles" />,
-  ParticlesProvider: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
-  ),
-  useParticlesProvider: () => ({ loaded: true }),
+  initParticlesEngine: () => Promise.resolve(),
 }));
 
 import Index from './Index';
@@ -19,14 +16,16 @@ describe('Index page', () => {
     expect(() => render(<Index />)).not.toThrow();
   });
 
-  it('composes every section of the site', () => {
+  it('composes every section of the site', async () => {
     const { container } = render(<Index />);
 
     expect(container.querySelector('nav')).toBeInTheDocument();
     expect(container.querySelector('section#about')).toBeInTheDocument();
     expect(container.querySelector('section#work')).toBeInTheDocument();
     expect(container.querySelector('section#contact')).toBeInTheDocument();
-    expect(screen.getByTestId('particles')).toBeInTheDocument();
+    // Awaited: the particle layer renders null until the engine finishes
+    // initialising, so it appears a tick after the rest of the page.
+    expect(await screen.findByTestId('particles')).toBeInTheDocument();
   });
 
   it('orders the sections about → work → contact', () => {

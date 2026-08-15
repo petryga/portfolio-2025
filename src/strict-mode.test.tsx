@@ -6,10 +6,7 @@ import { describe, expect, it, vi } from 'vitest';
 vi.mock('@tsparticles/slim', () => ({ loadSlim: vi.fn() }));
 vi.mock('@tsparticles/react', () => ({
   default: () => <div data-testid="particles" />,
-  ParticlesProvider: ({ children }: { children: React.ReactNode }) => (
-    <div>{children}</div>
-  ),
-  useParticlesProvider: () => ({ loaded: true }),
+  initParticlesEngine: () => Promise.resolve(),
 }));
 
 import Index from './pages/Index';

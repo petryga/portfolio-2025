@@ -1,20 +1,18 @@
-import { useMemo } from "react";
-import Particles, {
-  ParticlesProvider,
-  useParticlesProvider,
-} from "@tsparticles/react";
-import type { Engine, ISourceOptions } from "@tsparticles/engine";
+import { useEffect, useMemo, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import type { ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
-// tsparticles v4 replaced the initParticlesEngine() promise with a provider +
-// hook pair, so engine setup lives in ParticlesProvider and the layer below
-// reads its loaded flag instead of tracking init in local state.
-const registerSlim = async (engine: Engine) => {
-  await loadSlim(engine);
-};
+const ParticlesBackground = () => {
+  const [init, setInit] = useState(false);
 
-const ParticlesLayer = () => {
-  const { loaded } = useParticlesProvider();
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
 
   const options: ISourceOptions = useMemo(
     () => ({
@@ -128,7 +126,7 @@ const ParticlesLayer = () => {
     []
   );
 
-  if (loaded) {
+  if (init) {
     return (
       <Particles
         id="tsparticles"
@@ -140,11 +138,5 @@ const ParticlesLayer = () => {
 
   return null;
 };
-
-const ParticlesBackground = () => (
-  <ParticlesProvider init={registerSlim}>
-    <ParticlesLayer />
-  </ParticlesProvider>
-);
 
 export default ParticlesBackground;
