@@ -29,3 +29,6 @@ build
 CLAUDE.md
 PORTFOLIO_CONTEXT.md
 .claude
+
+# Test coverage output
+coverage
