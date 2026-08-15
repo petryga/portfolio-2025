@@ -26,11 +26,11 @@ export const skillCategories = [
   },
   {
     category: "Tools & DevOps",
-    skills: ["Docker", "AWS", "CI/CD", "Git", "Jest", "Claude Code"],
+    skills: ["Docker", "AWS", "CI/CD", "Git", "Jest", "Claude Code", "smolagents"],
   },
   {
     category: "Currently Exploring",
-    skills: ["Arduino", 'Hugging Face Agents Course'],
+    skills: ["Arduino"],
   }
 ];
 
