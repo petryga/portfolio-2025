@@ -23,4 +23,18 @@ export default tseslint.config(
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  {
+    // shadcn/ui components and its generated hooks are vendored: they are added
+    // via `npx shadcn add` and re-generated from upstream, so local edits get
+    // lost. eslint-plugin-react-hooks v7 brings the React Compiler rules, and
+    // upstream shadcn trips three of them -- setState-in-effect in carousel and
+    // use-mobile, and Math.random() during render in sidebar's skeleton width.
+    // Exempt the vendored paths rather than fork them; the rules stay enforced
+    // on everything hand-written here.
+    files: ["src/components/ui/**", "src/hooks/use-mobile.tsx"],
+    rules: {
+      "react-hooks/set-state-in-effect": "off",
+      "react-hooks/purity": "off",
+    },
+  },
 );
