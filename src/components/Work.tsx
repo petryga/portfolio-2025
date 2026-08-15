@@ -82,8 +82,14 @@ const scripts = [
   {
     title: "GAIA Benchmark Agent",
     description:
-      "Final project for the Hugging Face Agents Course — a smolagents CodeAgent answering GAIA benchmark questions, deployed as a Gradio Space. Graded by exact string match, so most of the work was output discipline rather than reasoning.",
+      "Final project for the Hugging Face Agents Course — a smolagents CodeAgent answering GAIA benchmark questions. Graded by exact string match, so formatting the answer mattered as much as finding it. Tavily search and page-reading tools, Gemini Flash behind LiteLLM.",
     tech: ["smolagents", "Python", "Gemini", "Tavily", "Gradio"],
+  },
+  {
+    title: "Waste Sorting Classifier",
+    description:
+      "fastai vision model that classifies a photo into material type, then maps it to the right disposal bin (recyclable / compost / landfill) with a confidence threshold for uncertain guesses. FastAPI backend serving predictions to a small web frontend.",
+    tech: ["Python", "FastAPI", "fastai"],
   },
   {
     title: "Home Assistant Voice Pipeline",
@@ -108,12 +114,6 @@ const scripts = [
     description:
       "Bash + AppleScript focus trigger — closes distracting apps, opens VS Code + Notion via deep link, enforces website & application allowlists.",
     tech: ["Bash", "AppleScript", "macOS"],
-  },
-  {
-    title: "Waste Sorting Classifier",
-    description:
-      "fastai vision model that classifies a photo into material type, then maps it to the right disposal bin (recyclable / compost / landfill) with a confidence threshold for uncertain guesses. FastAPI backend serving predictions to a small web frontend.",
-    tech: ["Python", "FastAPI", "fastai"],
   },
 ];
 

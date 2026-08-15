@@ -14,13 +14,14 @@ const PROJECTS = [
   'Landing Page 2020',
 ];
 
+// Listed in render order.
 const SCRIPTS = [
   'GAIA Benchmark Agent',
+  'Waste Sorting Classifier',
   'Home Assistant Voice Pipeline',
   'Job Search Claude Code Agent',
   'Music Library Automation',
   'macOS Focus-Mode Script',
-  'Waste Sorting Classifier',
 ];
 
 // Projects rendered without a public URL — these are the internal tools.
@@ -73,6 +74,14 @@ describe('Work', () => {
     // Each script is one terminal-styled card in the second grid.
     const cards = container.querySelectorAll('.terminal-card');
     expect(cards.length).toBe(SCRIPTS.length);
+  });
+
+  it('renders the scripts in the intended order', () => {
+    const { container } = render(<Work />);
+    const titles = Array.from(container.querySelectorAll('.terminal-card h3')).map(
+      (h) => h.textContent?.trim(),
+    );
+    expect(titles).toEqual(SCRIPTS);
   });
 
   it('gives each script a description and at least one tech tag', () => {
