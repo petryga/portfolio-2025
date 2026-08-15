@@ -23,9 +23,13 @@ const ParticlesBackground = () => {
       particles: {
         number: {
           value: 150,
+          // v3 scales the count against a width x height reference area rather
+          // than the old value_area number, which it ignores. 1920x1080 are the
+          // engine defaults, written out here so the density is legible.
           density: {
             enable: true,
-            value_area: 800,
+            width: 1920,
+            height: 1080,
           },
         },
         color: {
@@ -35,13 +39,12 @@ const ParticlesBackground = () => {
         },
         shape: {
           type: "circle",
-          polygon: {
-            sides: 5,
-          },
         },
+        // v3 expresses per-particle variation as a value range, not a `random`
+        // flag, which it ignores. Kept as a flat 0.3 to preserve the current
+        // look; a { min, max } range here is what would vary it per particle.
         opacity: {
           value: 0.3,
-          random: true,
           animation: {
             enable: true,
             speed: 2,
@@ -83,7 +86,11 @@ const ParticlesBackground = () => {
         },
       },
       interactivity: {
-        detectOn: "canvas",
+        // The correct v3 key is detectsOn; the old detectOn was ignored, so
+        // this has always been the engine default of "window". Kept as window
+        // deliberately: the canvas sits at -z-10 behind the page content and
+        // never receives pointer events, so "canvas" would kill hover entirely.
+        detectsOn: "window",
         events: {
           onHover: {
             enable: true,
