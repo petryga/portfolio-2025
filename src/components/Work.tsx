@@ -80,6 +80,12 @@ const projects = [
 
 const scripts = [
   {
+    title: "GAIA Benchmark Agent",
+    description:
+      "Final project for the Hugging Face Agents Course — a smolagents CodeAgent that answers GAIA benchmark questions, deployed as a Gradio Space. Answers are graded by exact string match, so most of the work went into output discipline: a normalizer for trailing periods and list spacing, and prompting that refuses to answer from search snippets, treats a zero-result parse as a failed parse rather than an answer, and routes around captchas by finding the arXiv version instead. Tavily search and page-reading tools, Gemini Flash behind LiteLLM.",
+    tech: ["smolagents", "Python", "Gemini", "Tavily", "Gradio"],
+  },
+  {
     title: "Home Assistant Voice Pipeline",
     description:
       "Self-hosted voice home assistant — customized ESPHome firmware config for a ReSpeaker Lite satellite, Whisper STT (Wyoming), Piper TTS, Ollama (qwen3:4b) as the conversation agent. Voice automations for climate, lighting, navigation, and weather/AQI.",

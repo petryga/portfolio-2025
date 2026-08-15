@@ -15,6 +15,7 @@ const PROJECTS = [
 ];
 
 const SCRIPTS = [
+  'GAIA Benchmark Agent',
   'Home Assistant Voice Pipeline',
   'Job Search Claude Code Agent',
   'Music Library Automation',
@@ -65,6 +66,23 @@ describe('Work', () => {
     for (const title of SCRIPTS) {
       expect(screen.getByText(title), `${title} is missing`).toBeInTheDocument();
     }
+  });
+
+  it('renders exactly the expected number of scripts', () => {
+    const { container } = render(<Work />);
+    // Each script is one terminal-styled card in the second grid.
+    const cards = container.querySelectorAll('.terminal-card');
+    expect(cards.length).toBe(SCRIPTS.length);
+  });
+
+  it('gives each script a description and at least one tech tag', () => {
+    const { container } = render(<Work />);
+    container.querySelectorAll('.terminal-card').forEach((card) => {
+      expect(card.querySelector('p')?.textContent?.trim().length ?? 0).toBeGreaterThan(20);
+      expect(
+        card.querySelectorAll('span.font-mono.rounded-full').length,
+      ).toBeGreaterThan(0);
+    });
   });
 
   it('gives each project a non-empty description', () => {
