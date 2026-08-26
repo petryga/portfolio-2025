@@ -10,6 +10,7 @@ export const skillCategories = [
       "Sequelize",
       "MongoDB",
       "Python",
+      "SQL"
     ],
   },
   {
