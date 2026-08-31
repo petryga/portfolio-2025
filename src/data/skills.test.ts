@@ -20,6 +20,7 @@ describe('skillCategories contents', () => {
           'Sequelize',
           'MongoDB',
           'Python',
+          'SQL',
         ],
       },
       {
@@ -53,9 +54,9 @@ describe('skillCategories contents', () => {
     ]);
   });
 
-  it('lists 23 skills in total', () => {
+  it('lists 24 skills in total', () => {
     const total = skillCategories.reduce((n, c) => n + c.skills.length, 0);
-    expect(total).toBe(23);
+    expect(total).toBe(24);
   });
 });
 

@@ -9,9 +9,15 @@ const ParticlesBackground = () => {
   useEffect(() => {
     initParticlesEngine(async (engine) => {
       await loadSlim(engine);
-    }).then(() => {
-      setInit(true);
-    });
+    })
+      .then(() => {
+        setInit(true);
+      })
+      .catch(() => {
+        // The background is purely decorative — if the engine fails to load,
+        // leave `init` false so nothing renders rather than surfacing an
+        // unhandled rejection.
+      });
   }, []);
 
   const options: ISourceOptions = useMemo(

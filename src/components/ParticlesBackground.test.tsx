@@ -85,6 +85,7 @@ describe('ParticlesBackground', () => {
     expect(() => render(<ParticlesBackground />)).not.toThrow();
     await new Promise((r) => setTimeout(r, 0));
     expect(screen.queryByTestId('particles')).not.toBeInTheDocument();
+    expect(unhandled).not.toHaveBeenCalled();
 
     window.removeEventListener('unhandledrejection', unhandled);
   });

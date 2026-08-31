@@ -5,13 +5,13 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Lock } from "lucide-react";
-import goveyanceImg from "@/assets/9.jpeg";
-import jobTrackerImg from "@/assets/10.jpg";
-import readyWhenImg from "@/assets/6.jpeg";
-import expenseTrackerImg from "@/assets/3.jpeg";
-import vaporwavePortfolioImg from "@/assets/7.jpeg";
-import firstPortfolioImg from "@/assets/5.jpeg";
-import blackAndWhitePortfolioImg from "@/assets/4.jpeg";
+import goveyanceImg from "@/assets/9.webp";
+import jobTrackerImg from "@/assets/10.webp";
+import readyWhenImg from "@/assets/6.webp";
+import expenseTrackerImg from "@/assets/3.webp";
+import vaporwavePortfolioImg from "@/assets/7.webp";
+import firstPortfolioImg from "@/assets/5.webp";
+import blackAndWhitePortfolioImg from "@/assets/4.webp";
 
 const projects = [
   {
@@ -126,56 +126,64 @@ const Work = () => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-x-8 gap-y-16 ">
-          {projects.map((project, index) => (
-            <a
-              key={index}
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${project.link
-                ? "group cursor-pointer block h-full flex flex-col"
-                : "group cursor-default block h-full flex flex-col"
-                }`}
-            >
-              <div className="relative overflow-hidden rounded-t-lg aspect-video bg-muted border border-border border-b-0">
-                {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={`${project.title} screenshot`}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-smooth group-hover:scale-105"
-                  />
-                ) : (
-                  <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-subtle">
-                    <Lock className="w-6 h-6" strokeWidth={1.5} />
-                    <span className="font-mono text-xs">Internal tool — no public preview</span>
-                  </div>
-                )}
+          {projects.map((project, index) => {
+            const inner = (
+              <>
+                <div className="relative overflow-hidden rounded-t-lg aspect-video bg-muted border border-border border-b-0">
+                  {project.image ? (
+                    <img
+                      src={project.image}
+                      alt={`${project.title} screenshot`}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-smooth group-hover:scale-105"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-subtle">
+                      <Lock className="w-6 h-6" strokeWidth={1.5} />
+                      <span className="font-mono text-xs">Internal tool — no public preview</span>
+                    </div>
+                  )}
+                </div>
+                <Card className="border-accent/30 bg-card shadow-none flex-1 flex flex-col rounded-t-none rounded-b-lg">
+                  <CardHeader>
+                    <CardTitle className="font-mono text-lg font-medium leading-normal tracking-normal group-hover:text-accent transition-smooth">
+                      {project.title}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="flex-1 flex flex-col">
+                    <p className="text-base text-muted-foreground mb-8 font-light leading-relaxed flex-1">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {project.tech.map((tech) => (
+                        <span
+                          key={tech}
+                          className="font-mono text-xs px-2 py-0.5 surface-subtle rounded-full border border-accent/30 text-subtle"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </>
+            );
+            const shared = "project group block h-full flex flex-col";
+            return project.link ? (
+              <a
+                key={index}
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${shared} cursor-pointer`}
+              >
+                {inner}
+              </a>
+            ) : (
+              <div key={index} className={`${shared} cursor-default`}>
+                {inner}
               </div>
-              <Card className="border-accent/30 bg-card shadow-none flex-1 flex flex-col rounded-t-none rounded-b-lg">
-                <CardHeader>
-                  <CardTitle className="font-mono text-lg font-medium leading-normal tracking-normal group-hover:text-accent transition-smooth">
-                    {project.title}
-                  </CardTitle>
-
-                </CardHeader>
-                <CardContent className="flex-1 flex flex-col">
-                  <p className="text-base text-muted-foreground mb-8 font-light leading-relaxed flex-1">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
-                      <span
-                        key={tech}
-                        className="font-mono text-xs px-2 py-0.5 surface-subtle rounded-full border border-accent/30 text-subtle"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            </a>
-          ))}
+            );
+          })}
         </div>
 
         <h2 className="text-sm uppercase tracking-wide text-subtle mb-8 mt-16 font-mono">

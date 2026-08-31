@@ -58,7 +58,7 @@ describe('Work', () => {
   it('renders exactly the expected number of projects', () => {
     const { container } = render(<Work />);
     // Each project is one grid anchor.
-    const cards = container.querySelectorAll('.grid > a');
+    const cards = container.querySelectorAll('.grid > .project');
     expect(cards.length).toBe(PROJECTS.length);
   });
 
@@ -96,7 +96,7 @@ describe('Work', () => {
 
   it('gives each project a non-empty description', () => {
     const { container } = render(<Work />);
-    const paragraphs = container.querySelectorAll('.grid > a p');
+    const paragraphs = container.querySelectorAll('.grid > .project p');
     expect(paragraphs.length).toBe(PROJECTS.length);
     paragraphs.forEach((p) => {
       expect(p.textContent?.trim().length ?? 0).toBeGreaterThan(20);
@@ -105,7 +105,7 @@ describe('Work', () => {
 
   it('gives each project at least one tech tag', () => {
     const { container } = render(<Work />);
-    container.querySelectorAll('.grid > a').forEach((card) => {
+    container.querySelectorAll('.grid > .project').forEach((card) => {
       const tags = card.querySelectorAll('span.font-mono.rounded-full');
       expect(tags.length).toBeGreaterThan(0);
     });
@@ -140,7 +140,7 @@ describe('Work', () => {
     it('links the projects whose titles name a live site', () => {
       const { container } = render(<Work />);
       const hrefByTitle = new Map<string, string | null>();
-      container.querySelectorAll('.grid > a').forEach((card) => {
+      container.querySelectorAll('.grid > .project').forEach((card) => {
         const title = card.querySelector('[class*="text-lg"]')?.textContent;
         if (title) hrefByTitle.set(title.trim(), card.getAttribute('href'));
       });
@@ -152,22 +152,24 @@ describe('Work', () => {
       );
     });
 
-    // KNOWN DEFECT, documented rather than asserted as desirable: a project
-    // with no `link` still renders an <a> element, just without an href. An
-    // anchor without href is not a link — it is not focusable and not
-    // clickable — yet it still carries target="_blank". Fixing it means
-    // rendering a non-anchor wrapper when there is no URL; this test pins the
-    // current behaviour so the fix is visible when it happens.
-    it('renders link-less projects as an anchor with no href (known defect)', () => {
+    // A project with no `link` renders a non-anchor wrapper — an <a> without an
+    // href is not a link (not focusable, not clickable) and must not carry
+    // target="_blank".
+    it('renders link-less projects as a non-anchor wrapper', () => {
       const { container } = render(<Work />);
-      const hrefless = Array.from(container.querySelectorAll('.grid > a')).filter(
-        (a) => !a.getAttribute('href'),
-      );
+      const cards = Array.from(container.querySelectorAll('.grid > .project'));
+      const linkless = cards.filter((el) => el.tagName !== 'A');
 
-      expect(hrefless.length).toBe(PROJECTS_WITHOUT_LINK.length);
-      hrefless.forEach((a) => {
-        expect(a.className).toContain('cursor-default');
+      expect(linkless.length).toBe(PROJECTS_WITHOUT_LINK.length);
+      linkless.forEach((el) => {
+        expect(el.className).toContain('cursor-default');
+        expect(el).not.toHaveAttribute('href');
+        expect(el).not.toHaveAttribute('target');
       });
+      // Every remaining project card is a real anchor with an href.
+      cards
+        .filter((el) => el.tagName === 'A')
+        .forEach((a) => expect(a).toHaveAttribute('href'));
     });
   });
 
