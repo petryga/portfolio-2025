@@ -14,6 +14,7 @@ describe('skillCategories contents', () => {
         skills: [
           'Node.js',
           'Express',
+          'Serverless Framework',
           'REST APIs',
           'PostgreSQL',
           'AWS Lambda',
@@ -32,6 +33,7 @@ describe('skillCategories contents', () => {
           'HTML/CSS',
           'Tailwind CSS',
           'Redux',
+          'RTK Query',
           'Vite',
         ],
       },
@@ -43,6 +45,10 @@ describe('skillCategories contents', () => {
           'CI/CD',
           'Git',
           'Jest',
+          'Vitest',
+          'Cypress',
+          'JSON Schema',
+          'JMESPath',
           'Claude Code',
           'smolagents',
         ],
@@ -54,9 +60,9 @@ describe('skillCategories contents', () => {
     ]);
   });
 
-  it('lists 24 skills in total', () => {
+  it('lists 30 skills in total', () => {
     const total = skillCategories.reduce((n, c) => n + c.skills.length, 0);
-    expect(total).toBe(24);
+    expect(total).toBe(30);
   });
 });
 
