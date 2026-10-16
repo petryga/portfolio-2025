@@ -172,6 +172,8 @@ const Work = () => {
               <a
                 key={index}
                 href={project.link}
+                data-umami-event="project-click"
+                data-umami-event-project={project.title}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`${shared} cursor-pointer`}

@@ -18,6 +18,7 @@ const Hero = () => {
           <div className="pt-4 flex items-center gap-6 animate-fade-in-delay">
             <a
               href="#work"
+              data-umami-event="hero-view-work"
               className="inline-flex items-center gap-2 text-foreground hover:text-accent transition-smooth group"
             >
               <span className="font-mono font-medium">View my work</span>

@@ -13,6 +13,8 @@ const Contact = () => {
           <div className="flex flex-wrap gap-6 pt-4">
             <a
               href="mailto:hello@petryga.com"
+              data-umami-event="contact-click"
+              data-umami-event-type="email"
               className="inline-flex items-center gap-2 text-foreground hover:text-accent transition-smooth group"
             >
               <Mail className="w-5 h-5 text-accent" />
@@ -20,6 +22,8 @@ const Contact = () => {
             </a>
             <a
               href="https://github.com/petryga"
+              data-umami-event="contact-click"
+              data-umami-event-type="github"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-foreground hover:text-accent transition-smooth group"
@@ -29,6 +33,8 @@ const Contact = () => {
             </a>
             <a
               href="https://linkedin.com/in/petryga"
+              data-umami-event="contact-click"
+              data-umami-event-type="linkedin"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-foreground hover:text-accent transition-smooth group"
