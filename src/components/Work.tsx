@@ -33,7 +33,7 @@ const projects = [
   {
     title: "Expense Tracker",
     description:
-      "Built for myself after my budgeting app was discontinued, then turned into my AI project. A Python (FastAPI) service suggests a category for each imported card transaction with Claude and structured output: 76% accurate against a 60% rules baseline. For Amazon orders it retrieves my own similar past purchases (local embeddings, pgvector), which added about 12 points in a three-arm eval. An in-app assistant answers spending questions through tool calls to my MCP server, with read-only tools and step and time limits, and passes its 12-question eval every run. The public demo shows precomputed suggestions; the model runs locally. Also: auth, a demo account that resets on login, Sentry, and CI across four repos.",
+      "Built for myself after my budgeting app was discontinued, then turned into my AI project. A Python (FastAPI) service suggests a category for each imported card transaction with Claude and structured output: 76% accurate against a 60% rules baseline. For Amazon orders it retrieves my own similar past purchases (local embeddings, pgvector), which added about 12 points in a three-arm eval. An in-app assistant answers spending questions through tool calls to my MCP server, with read-only tools and step and time limits, and passes its 12-question eval every run. The public demo shows precomputed suggestions, and the assistant is live with a few questions a day. Also: auth, a demo account that resets on login, Sentry, and CI across four repos.",
     tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Python", "FastAPI", "Claude API", "pgvector", "MCP"],
     image: expenseTrackerImg,
     link: "https://expense-tracker-fe-nu.vercel.app/",
@@ -41,7 +41,7 @@ const projects = [
   },
   {
     title: "Kanban board",
-    description: "I made this Kanban board with optimistic drag-and-drop for tracking job applications / todo lists / custom entries before I found out that Notion already had it all. Redux Toolkit for state, reordering persisted to MongoDB.",
+    description: "I made this Kanban board with optimistic drag-and-drop for tracking job applications / todo lists / custom entries before I found out that Notion already had it all. Redux Toolkit for state; the API persists boards to MongoDB, and the live demo keeps them in your browser, no login needed.",
     tech: ["React", "TypeScript", "Redux Toolkit", "Node.js", "MongoDB"],
     image: jobTrackerImg,
     link: "https://job-tracker-ibdv.onrender.com/",
