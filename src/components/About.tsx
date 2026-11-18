@@ -13,6 +13,10 @@ const About = () => {
             backend logic to frontend polish, whatever a feature called for.
           </p>
           <p>
+            Lately I build with LLMs: transaction categorization with Claude, retrieval over my own
+            past purchases, and a spending assistant on my own MCP server.
+          </p>
+          <p>
             Off the clock, I run a home server, build voice automations, and script away anything I have to do twice.
           </p>
         </div>

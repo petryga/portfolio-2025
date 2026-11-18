@@ -17,11 +17,9 @@ describe('skillCategories contents', () => {
           'Serverless Framework',
           'REST APIs',
           'PostgreSQL',
+          'SQL',
           'AWS Lambda',
           'Sequelize',
-          'MongoDB',
-          'Python',
-          'SQL',
         ],
       },
       {
@@ -31,8 +29,7 @@ describe('skillCategories contents', () => {
           'TypeScript',
           'JavaScript',
           'HTML/CSS',
-          'Tailwind CSS',
-          'Redux',
+          'Redux Toolkit',
           'RTK Query',
           'Vite',
         ],
@@ -40,7 +37,6 @@ describe('skillCategories contents', () => {
       {
         category: 'Tools & DevOps',
         skills: [
-          'Docker',
           'AWS',
           'CI/CD',
           'Git',
@@ -50,19 +46,31 @@ describe('skillCategories contents', () => {
           'JSON Schema',
           'JMESPath',
           'Claude Code',
-          'smolagents',
+          'Codex',
         ],
       },
       {
-        category: 'Currently Exploring',
-        skills: ['Arduino'],
+        category: 'Familiar',
+        skills: [
+          'Python (FastAPI)',
+          'Claude API',
+          'LLM evals',
+          'RAG',
+          'AI agents',
+          'MCP',
+          'pgvector',
+          'smolagents',
+          'Docker',
+          'MongoDB',
+          'Tailwind CSS',
+        ],
       },
     ]);
   });
 
-  it('lists 30 skills in total', () => {
+  it('lists 36 skills in total', () => {
     const total = skillCategories.reduce((n, c) => n + c.skills.length, 0);
-    expect(total).toBe(30);
+    expect(total).toBe(36);
   });
 });
 
@@ -72,7 +80,7 @@ describe('skillCategories shape', () => {
       'Backend',
       'Frontend',
       'Tools & DevOps',
-      'Currently Exploring',
+      'Familiar',
     ]);
   });
 

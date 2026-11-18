@@ -4,11 +4,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Lock } from "lucide-react";
+import { Github, Lock } from "lucide-react";
 import goveyanceImg from "@/assets/9.webp";
 import jobTrackerImg from "@/assets/10.webp";
 import readyWhenImg from "@/assets/6.webp";
-import expenseTrackerImg from "@/assets/3.webp";
+// The previous screenshot (monthly chart) is src/assets/3.webp, kept to switch back to.
+import expenseTrackerImg from "@/assets/expense-tracker-ai-review.webp";
 import vaporwavePortfolioImg from "@/assets/7.webp";
 import firstPortfolioImg from "@/assets/5.webp";
 import blackAndWhitePortfolioImg from "@/assets/4.webp";
@@ -17,23 +18,34 @@ const projects = [
   {
     title: "GoVeyance",
     description:
-      "Legal tech for real estate transactions: software BC and Ontario law firms and notaries use to close property sales. Designed and built Ontario's real-time financial calculation engine and closing-payout system from scratch, using an extensible, type-driven architecture; also built BC's tax-aware Account Library and the Payout Investors module for GoVeyance's industry-first private-lending workflow.",
+      "Legal tech for real estate transactions: software BC and Ontario law firms and notaries use to close property sales. Designed and built the closing funds calculation engine from scratch, launch-critical for the company's expansion into Ontario: a typed, config-driven design that document generation reused and later features plugged into. Also built the law-firm billing behind every client bill (BC's tax-aware Account Library) and the Payout Investors module for GoVeyance's industry-first private-lending workflow.",
     tech: ["React", "TypeScript", "AWS Lambda", "PostgreSQL", "Sequelize"],
     image: goveyanceImg,
     link: "https://goveyance.com/",
   },
   {
     title: "ReadyWhen",
-    description: "Wills & inheritance planning platform with client + notary portals and a secure document vault. Built 40+ forms within its JSON Schema-driven form system. React/TS frontend, serverless Node backend.",
+    description: "Wills & inheritance planning platform with client + notary portals and a secure document vault. Built 40+ forms within its JSON Schema-driven form system, plus forms for the internal admin portal staff use, backed by serverless REST APIs. React/TS frontend, serverless Node backend.",
     tech: ["React", "TypeScript", "JSON Schema", "Node.js", "PostgreSQL"],
     image: readyWhenImg,
     link: "https://readywhen.com/",
   },
   {
-    title: "Admin Portal",
-    description: "Internal back-office tool for company staff — built out forms for the admin frontend, backed by serverless REST APIs.",
-    tech: ["React", "TypeScript", "REST APIs"],
-    link: "https://admin.app.readywhen.ca/",
+    title: "Expense Tracker",
+    description:
+      "Built for myself after my budgeting app was discontinued, then turned into my AI project. A Python (FastAPI) service suggests a category for each imported card transaction with Claude and structured output: 76% accurate against a 60% rules baseline. For Amazon orders it retrieves my own similar past purchases (local embeddings, pgvector), which added about 12 points in a three-arm eval. An in-app assistant answers spending questions through tool calls to my MCP server, with read-only tools and step and time limits, and passes its 12-question eval every run. The public demo shows precomputed suggestions; the model runs locally. Also: auth, a demo account that resets on login, Sentry, and CI across four repos.",
+    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Python", "FastAPI", "Claude API", "pgvector", "MCP"],
+    image: expenseTrackerImg,
+    link: "https://expense-tracker-fe-nu.vercel.app/",
+    code: "https://github.com/petryga/expense-tracker-AI",
+  },
+  {
+    title: "Kanban board",
+    description: "I made this Kanban board with optimistic drag-and-drop for tracking job applications / todo lists / custom entries before I found out that Notion already had it all. Redux Toolkit for state, reordering persisted to MongoDB.",
+    tech: ["React", "TypeScript", "Redux Toolkit", "Node.js", "MongoDB"],
+    image: jobTrackerImg,
+    link: "https://job-tracker-ibdv.onrender.com/",
+    code: "https://github.com/petryga/job-tracker",
   },
   {
     title: "Support Portal",
@@ -42,25 +54,12 @@ const projects = [
     tech: ["React", "TypeScript", "Node.js", "AWS Lambda", "PostgreSQL"],
   },
   {
-    title: "Expense Tracker",
-    description: 'Built for myself after the budgeting app I used got discontinued. Tracks income, expenses, recurring transactions, and category budgets, with a net-worth tracker, monthly/yearly expense comparisons, and a cash-flow Sankey diagram. Originally ran locally only — added auth, hosting, and a demo user with seeded data that resets on login — to publish it publicly. CI runs lint, typecheck, and 220+ unit tests across both apps on every push, and applies every migration and seeder to a throwaway Postgres container to catch anything that would break a deploy.',
-    tech: ["React", "TypeScript", "Node.js", "Sequelize", "PostgreSQL", "Docker"],
-    image: expenseTrackerImg,
-    link: "https://expense-tracker-fe-nu.vercel.app/",
-  },
-  {
-    title: "Kanban board",
-    description: "I made this Kanban board with optimistic drag-and-drop for tracking job applications / todo lists / custom entries before I found out that Notion already had it all. Redux Toolkit for state, reordering persisted to MongoDB.",
-    tech: ["React", "TypeScript", "Redux Toolkit", "Node.js", "MongoDB"],
-    image: jobTrackerImg,
-    link: "https://job-tracker-ibdv.onrender.com/",
-  },
-  {
     title: "Landing Page 2024",
     description: "GSAP scroll-driven animations — my GSAP obsession year.",
     tech: ["React", "HTML/CSS", "GSAP"],
     image: blackAndWhitePortfolioImg,
     link: "https://petryga.github.io/portfolio-2024/",
+    code: "https://github.com/petryga/portfolio-2024",
   },
   {
     title: "Landing Page 2021",
@@ -68,6 +67,7 @@ const projects = [
     tech: ["JavaScript", "HTML/CSS"],
     image: vaporwavePortfolioImg,
     link: "https://petryga.github.io/portfolio-2021/",
+    code: "https://github.com/petryga/portfolio-2021",
   },
   {
     title: "Landing Page 2020",
@@ -75,6 +75,7 @@ const projects = [
     tech: ["JavaScript", "HTML/CSS"],
     image: firstPortfolioImg,
     link: "https://petryga.github.io/portfolio-2020/",
+    code: "https://github.com/petryga/portfolio-2020",
   },
 ];
 
@@ -96,12 +97,6 @@ const scripts = [
     description:
       "Self-hosted voice home assistant — customized ESPHome firmware config for a ReSpeaker Lite satellite, Whisper STT (Wyoming), Piper TTS, Ollama (qwen3:4b) as the conversation agent. Voice automations for climate, lighting, navigation, and weather/AQI.",
     tech: ["ESPHome", "Whisper", "Piper TTS", "Ollama", "YAML"],
-  },
-  {
-    title: "Job Search Claude Code Agent",
-    description:
-      "Claude Code agent with structured context — per-job folders, CLAUDE.md instructions, JSON profile schema for scoring roles against my preferences.",
-    tech: ["Claude Code", "Bash", "JSON"],
   },
   {
     title: "Music Library Automation",
@@ -153,6 +148,19 @@ const Work = () => {
                     <p className="text-base text-muted-foreground mb-8 font-light leading-relaxed flex-1">
                       {project.description}
                     </p>
+                    {project.code && (
+                      <a
+                        href={project.code}
+                        data-umami-event="project-code-click"
+                        data-umami-event-project={project.title}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative z-10 mb-4 inline-flex w-fit items-center gap-1.5 font-mono text-xs text-subtle hover:text-accent transition-smooth"
+                      >
+                        <Github className="w-3.5 h-3.5" strokeWidth={1.5} />
+                        Code on GitHub
+                      </a>
+                    )}
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map((tech) => (
                         <span
@@ -168,6 +176,24 @@ const Work = () => {
               </>
             );
             const shared = "project group block h-full flex flex-col";
+            // A card with a code link can't be one big link (links can't nest):
+            // the demo link is stretched over the card, the code link sits above it.
+            if (project.link && project.code) {
+              return (
+                <div key={index} className={`${shared} relative cursor-pointer`}>
+                  {inner}
+                  <a
+                    href={project.link}
+                    aria-label={`${project.title} live demo`}
+                    data-umami-event="project-click"
+                    data-umami-event-project={project.title}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="absolute inset-0 z-0 rounded-lg"
+                  />
+                </div>
+              );
+            }
             return project.link ? (
               <a
                 key={index}

@@ -5,10 +5,9 @@ import Work from './Work';
 const PROJECTS = [
   'GoVeyance',
   'ReadyWhen',
-  'Admin Portal',
-  'Support Portal',
   'Expense Tracker',
   'Kanban board',
+  'Support Portal',
   'Landing Page 2024',
   'Landing Page 2021',
   'Landing Page 2020',
@@ -19,7 +18,6 @@ const SCRIPTS = [
   'GAIA Benchmark Agent',
   'Waste Sorting Classifier',
   'Home Assistant Voice Pipeline',
-  'Job Search Claude Code Agent',
   'Music Library Automation',
   'macOS Focus-Mode Script',
 ];
@@ -27,7 +25,7 @@ const SCRIPTS = [
 // Projects rendered without a public URL — these are the internal tools.
 const PROJECTS_WITHOUT_LINK = ['Support Portal'];
 // Projects rendered without a screenshot, which fall back to the lock tile.
-const PROJECTS_WITHOUT_IMAGE = ['Admin Portal', 'Support Portal'];
+const PROJECTS_WITHOUT_IMAGE = ['Support Portal'];
 
 describe('Work', () => {
   it('renders inside a section addressable by the nav anchor', () => {
@@ -142,7 +140,11 @@ describe('Work', () => {
       const hrefByTitle = new Map<string, string | null>();
       container.querySelectorAll('.grid > .project').forEach((card) => {
         const title = card.querySelector('[class*="text-lg"]')?.textContent;
-        if (title) hrefByTitle.set(title.trim(), card.getAttribute('href'));
+        // The card itself, or (with a code link) the demo link stretched over it.
+        const demo = card.getAttribute('href')
+          ? card
+          : card.querySelector('a[aria-label$="live demo"]');
+        if (title) hrefByTitle.set(title.trim(), demo?.getAttribute('href') ?? null);
       });
 
       expect(hrefByTitle.get('GoVeyance')).toBe('https://goveyance.com/');
@@ -158,7 +160,8 @@ describe('Work', () => {
     it('renders link-less projects as a non-anchor wrapper', () => {
       const { container } = render(<Work />);
       const cards = Array.from(container.querySelectorAll('.grid > .project'));
-      const linkless = cards.filter((el) => el.tagName !== 'A');
+      // A card with a code link is a wrapper holding its own links (below).
+      const linkless = cards.filter((el) => el.tagName !== 'A' && !el.querySelector('a[href]'));
 
       expect(linkless.length).toBe(PROJECTS_WITHOUT_LINK.length);
       linkless.forEach((el) => {
@@ -208,6 +211,28 @@ describe('Work', () => {
         expect(src, 'image has no src').toBeTruthy();
         expect(src).not.toBe('undefined');
       }
+    });
+
+    // Links can't nest, so a card with a code link stretches its demo link
+    // over the card and keeps the code link above it, both real links.
+    it('gives each project with public code a demo link over the card and a code link', () => {
+      render(<Work />);
+      const demos = Object.fromEntries(
+        screen
+          .getAllByRole('link', { name: /live demo$/ })
+          .map((a) => [a.getAttribute('aria-label'), a.getAttribute('href')]),
+      );
+      expect(demos['Expense Tracker live demo']).toBe('https://expense-tracker-fe-nu.vercel.app/');
+      const code = screen
+        .getAllByRole('link', { name: /Code on GitHub/ })
+        .map((a) => a.getAttribute('href'));
+      expect(code).toEqual([
+        'https://github.com/petryga/expense-tracker-AI',
+        'https://github.com/petryga/job-tracker',
+        'https://github.com/petryga/portfolio-2024',
+        'https://github.com/petryga/portfolio-2021',
+        'https://github.com/petryga/portfolio-2020',
+      ]);
     });
   });
 });

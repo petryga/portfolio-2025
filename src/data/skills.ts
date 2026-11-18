@@ -1,3 +1,5 @@
+// Grouped like the resume: what I've used at work, then "Familiar" for what
+// I've built with on my own (the AI work) or only used lightly.
 export const skillCategories = [
   {
     category: "Backend",
@@ -7,11 +9,9 @@ export const skillCategories = [
       "Serverless Framework",
       "REST APIs",
       "PostgreSQL",
+      "SQL",
       "AWS Lambda",
       "Sequelize",
-      "MongoDB",
-      "Python",
-      "SQL"
     ],
   },
   {
@@ -21,19 +21,40 @@ export const skillCategories = [
       "TypeScript",
       "JavaScript",
       "HTML/CSS",
-      "Tailwind CSS",
-      "Redux",
+      "Redux Toolkit",
       "RTK Query",
       "Vite",
     ],
   },
   {
     category: "Tools & DevOps",
-    skills: ["Docker", "AWS", "CI/CD", "Git", "Jest", "Vitest", "Cypress", "JSON Schema", "JMESPath", "Claude Code", "smolagents"],
+    skills: [
+      "AWS",
+      "CI/CD",
+      "Git",
+      "Jest",
+      "Vitest",
+      "Cypress",
+      "JSON Schema",
+      "JMESPath",
+      "Claude Code",
+      "Codex",
+    ],
   },
   {
-    category: "Currently Exploring",
-    skills: ["Arduino"],
-  }
+    category: "Familiar",
+    skills: [
+      "Python (FastAPI)",
+      "Claude API",
+      "LLM evals",
+      "RAG",
+      "AI agents",
+      "MCP",
+      "pgvector",
+      "smolagents",
+      "Docker",
+      "MongoDB",
+      "Tailwind CSS",
+    ],
+  },
 ];
-
